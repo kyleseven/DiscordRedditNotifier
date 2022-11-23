@@ -8,11 +8,7 @@ This bot runs on Python 3.11 and depends on discord.py and aPRAW.
 
 # Running the Bot
 ## Using Docker-Compose
-1. Modify `./config/config.toml` to configure:
-    - Discord Bot Token
-    - Discord Channel ID
-    - Reddit API Client ID and Secret
-    - Watchers [(learn more here)](/docs/watchers.md)
+1. Configure your settings in `./config/config.toml` [(Read more)](/docs/configuration.md)
 
 2. Run docker-compose
     - `docker-compose up --build -d`
@@ -24,11 +20,7 @@ This bot runs on Python 3.11 and depends on discord.py and aPRAW.
 2. Change directory to `notifier-bot`
     - `cd notifier-bot`
 
-3. Modify `config.toml` to configure:
-    - Discord Bot Token
-    - Discord Channel ID
-    - Reddit API Client ID and Secret
-    - Watchers [(learn more here)](/docs/watchers.md)
+3. Configure your settings in `config.toml`. [(Read more)](/docs/configuration.md)
 
 4. Install required dependencies with `pip`
     - `pip install -r requirements.txt`
