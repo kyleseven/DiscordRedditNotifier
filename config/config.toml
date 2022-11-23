@@ -1,0 +1,42 @@
+[bot]
+token = "Insert Token Here"
+channel_id = 9999999999999999999
+search_interval = 60
+posts_per_search = 30
+
+[reddit]
+client_id = "Insert Client ID Here"
+client_secret = "Insert Client Secret Here"
+user_agent = "Discord Reddit Notifier Bot"
+
+# These are example watchers. You can remove these and define your own.
+# Read more in docs/watchers.md
+[[watchers]]
+name = "K-Pop Updates"
+subreddit = "kpop"
+enabled = true
+match_mode = "OR"
+search_terms = [
+  "loona",
+  "dreamcatcher",
+  "red velvet",
+  "itzy",
+  "le sserafim",
+  "aespa",
+  "heize",
+  "stayc"
+]
+
+[[watchers]]
+name = "Build a PC Sales"
+subreddit = "buildapcsales"
+enabled = true
+match_mode = "ALL"
+search_terms = []
+
+[[watchers]]
+name = "NVIDIA Driver Updates"
+subreddit = "nvidia"
+enabled = true
+match_mode = "AND" # Will notify if post contains ALL of the search terms
+search_terms = ["game ready driver", "discussion"]

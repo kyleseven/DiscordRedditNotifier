@@ -1,0 +1,12 @@
+services:
+  notifier-bot:
+    build: ./notifier-bot
+    container_name: notifier-bot
+    restart: unless-stopped
+    init: true
+    tty: true
+    stdin_open: true
+    volumes:
+      - type: bind
+        source: ./config/config.toml
+        target: /discordbot/config.toml
