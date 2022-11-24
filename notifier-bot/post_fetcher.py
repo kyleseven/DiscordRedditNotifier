@@ -30,19 +30,8 @@ class PostFetcher:
             async for submission in subreddit.new(limit=config.posts_per_search):
                 submission_list.append(submission)
 
-            new_submissions = []
-
             # Search submissions based on match mode and terms
-            for submission in submission_list:
-                match watcher["match_mode"]:
-                    case "OR":
-                        if any(term.casefold() in submission.title.casefold() for term in watcher["search_terms"]):
-                            new_submissions.append(submission)
-                    case "AND":
-                        if all(term.casefold() in submission.title.casefold() for term in watcher["search_terms"]):
-                            new_submissions.append(submission)
-                    case "ALL":
-                        new_submissions.append(submission)
+            new_submissions = self.match_submission_terms(watcher, submission_list)
 
             # Filter out submissions that have already been notified (submission time is before last check time)
             new_submissions[:] = [
@@ -57,6 +46,21 @@ class PostFetcher:
         self.last_time = int(round(datetime.datetime.now().timestamp()))
 
         return new_posts
+
+    def match_submission_terms(self, watcher, submission_list):
+        new_submissions = []
+        for submission in submission_list:
+            match watcher["match_mode"]:
+                case "OR":
+                    if any(term.casefold() in submission.title.casefold() for term in watcher["search_terms"]):
+                        new_submissions.append(submission)
+                case "AND":
+                    if all(term.casefold() in submission.title.casefold() for term in watcher["search_terms"]):
+                        new_submissions.append(submission)
+                case "ALL":
+                    new_submissions.append(submission)
+
+        return new_submissions
 
 
 class Post:
