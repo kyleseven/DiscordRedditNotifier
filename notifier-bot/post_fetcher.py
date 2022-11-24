@@ -18,12 +18,9 @@ class PostFetcher:
     async def fetch_new(self):
         new_posts: list[Post] = []
 
-        watchers = config.watchers
+        watchers = [watcher for watcher in config.watchers if watcher["enabled"]]
         # Go through each watcher
         for watcher in watchers:
-            if not watcher["enabled"]:
-                continue
-
             submission_list = []
             subreddit = await self.reddit.subreddit(watcher["subreddit"])
             # Get the last 30 posts from the subreddit's "new" feed
