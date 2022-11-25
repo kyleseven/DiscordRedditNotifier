@@ -16,7 +16,8 @@ class PostStreamer:
         )
 
     async def stream_new(self, callback):
-        await asyncio.gather(*[self.run_watcher_stream(watcher, callback) for watcher in config.watchers])
+        enabled_watchers = [watcher for watcher in config.watchers if watcher["enabled"]]
+        await asyncio.gather(*[self.run_watcher_stream(watcher, callback) for watcher in enabled_watchers])
 
     async def run_watcher_stream(self, watcher, callback):
         self.logger.info(f"Watcher \"{watcher['name']}\" started for r/{watcher['subreddit']}")
