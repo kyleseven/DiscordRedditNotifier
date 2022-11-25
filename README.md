@@ -48,7 +48,7 @@ search_terms = [
   "stayc"
 ]
 ```
-This watcher will watch r/kpop for new posts that contain *any* of the strings in `search_terms`. Read more about watchers [here](docs/configuration.md).
+This watcher will watch r/kpop for new posts that contain *any* of the strings in `search_terms` in the title. Read more about watchers [here](docs/configuration.md).
 
 Once the watcher finds a post that matches, a message will be sent to the channel defined by `channel_id`, as shown below.
 
