@@ -27,3 +27,29 @@ This bot runs on Python 3.11 and depends on discord.py and aPRAW.
 
 5. Run the bot
     - `python3 bot.py`
+
+## Usage Example
+
+The following watcher is defined in `config.toml`
+```toml
+[[watchers]]
+name = "K-Pop Updates"
+subreddit = "kpop"
+enabled = true
+match_mode = "OR"
+search_terms = [
+  "loona",
+  "dreamcatcher",
+  "red velvet",
+  "itzy",
+  "le sserafim",
+  "aespa",
+  "heize",
+  "stayc"
+]
+```
+This watcher will watch r/kpop for new posts that contain *any* of the strings in `search_terms`. Read more about watchers [here](docs/configuration.md).
+
+Once the watcher finds a post that matches, a message will be sent to the channel defined by `channel_id`, as shown below.
+
+![notification](https://i.imgur.com/vxlLEs3.png)
