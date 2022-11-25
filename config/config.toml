@@ -1,8 +1,6 @@
 [bot]
 token = "Insert Token Here"
 channel_id = 9999999999999999999
-search_interval = 60
-posts_per_search = 30
 
 [reddit]
 client_id = "Insert Client ID Here"
