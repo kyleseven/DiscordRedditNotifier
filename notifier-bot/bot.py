@@ -11,15 +11,12 @@ client = discord.Client(
     )
 )
 
-post_fetcher: PostStreamer
-
 
 @client.event
 async def on_ready():
     # Set up the post fetcher
-    global post_fetcher
-    post_fetcher = PostStreamer()
-    await post_fetcher.stream_new(notify)
+    post_streamer = PostStreamer()
+    await post_streamer.stream_new(notify)
 
 
 async def notify(post: Post):
