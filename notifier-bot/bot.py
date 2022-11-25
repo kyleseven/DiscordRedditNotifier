@@ -4,7 +4,12 @@ from post_streamer import Post, PostStreamer
 import config
 
 intents = discord.Intents.default()
-client = discord.Client(intents=intents)
+client = discord.Client(
+    intents=intents,
+    activity=discord.Activity(
+        type=discord.ActivityType.listening, name="Subreddits"
+    )
+)
 
 post_fetcher: PostStreamer
 
@@ -15,7 +20,6 @@ async def on_ready():
     global post_fetcher
     post_fetcher = PostStreamer()
     await post_fetcher.stream_new(notify)
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Reddit Threads"))
 
 
 async def notify(post: Post):
