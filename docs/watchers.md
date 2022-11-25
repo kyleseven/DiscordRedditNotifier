@@ -25,7 +25,7 @@ This watcher will watch r/kpop for new posts that contain ANY of the `search_ter
 To add a new watcher, create a new line with `[[watchers]]` and fill in the fields below.
 
 ## `name`
-A name to give to your watcher. Currently not used in the program.
+A name to give to your watcher.
 
 ## `subreddit`
 The subreddit the watcher should watch.
