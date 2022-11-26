@@ -2,6 +2,7 @@ import asyncio
 import logging
 
 import asyncpraw
+from asyncpraw.exceptions import AsyncPRAWException
 
 import config
 
@@ -20,11 +21,18 @@ class PostStreamer:
         await asyncio.gather(*[self.run_watcher_stream(watcher, callback) for watcher in enabled_watchers])
 
     async def run_watcher_stream(self, watcher, callback):
-        self.logger.info(f"Watcher \"{watcher['name']}\" started for r/{watcher['subreddit']}")
-        subreddit = await self.reddit.subreddit(watcher["subreddit"])
-        async for submission in subreddit.stream.submissions(skip_existing=True):
-            if self.watcher_match(watcher, submission):
-                asyncio.create_task(callback(Post(submission)))
+        while True:
+            self.logger.info(f"Watcher \"{watcher['name']}\" started for r/{watcher['subreddit']}")
+            try:
+                subreddit = await self.reddit.subreddit(watcher["subreddit"])
+                async for submission in subreddit.stream.submissions(skip_existing=True):
+                    if self.watcher_match(watcher, submission):
+                        asyncio.create_task(callback(Post(submission)))
+            except AsyncPRAWException as err:
+                self.logger.critical(f"Exception in watcher \"{watcher['name']}\": {err}")
+                self.logger.info(f"Restarting watcher \"{watcher['name']}\"...")
+                await asyncio.sleep(5)
+                continue
 
     def watcher_match(self, watcher, submission):
         match watcher["match_mode"]:
