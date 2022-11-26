@@ -39,7 +39,8 @@ class PostStreamer:
                 await asyncio.sleep(5)
                 continue
 
-    def watcher_match(self, watcher, submission):
+    @staticmethod
+    def watcher_match(watcher, submission):
         """Takes a watcher and submission and returns a boolean representing whether or not the submission
         title matches the watcher's parameters.
         """
