@@ -17,10 +17,15 @@ class PostStreamer:
         )
 
     async def stream_new(self, callback):
+        """Runs all of the subreddit streams for each enabled watcher. Callback is passed to run_watcher_stream()
+        """
         enabled_watchers = [watcher for watcher in config.watchers if watcher["enabled"]]
         await asyncio.gather(*[self.run_watcher_stream(watcher, callback) for watcher in enabled_watchers])
 
     async def run_watcher_stream(self, watcher, callback):
+        """Runs a subreddit stream for the given watcher and performs the callback when a matching
+        submission is found.
+        """
         while True:
             self.logger.info(f"Watcher \"{watcher['name']}\" started for r/{watcher['subreddit']}")
             try:
@@ -35,6 +40,9 @@ class PostStreamer:
                 continue
 
     def watcher_match(self, watcher, submission):
+        """Takes a watcher and submission and returns a boolean representing whether or not the submission
+        title matches the watcher's parameters.
+        """
         match watcher["match_mode"]:
             case "OR":
                 if any(term.casefold() in submission.title.casefold() for term in watcher["search_terms"]):
@@ -49,6 +57,8 @@ class PostStreamer:
 
 
 class Post:
+    """Takes only the relevant data from a submission.
+    """
     def __init__(self, submission):
         self.title = submission.title
         self.link = "https://reddit.com" + submission.permalink
