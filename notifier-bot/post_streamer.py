@@ -34,8 +34,7 @@ class PostStreamer:
                     if self.watcher_match(watcher, submission):
                         asyncio.create_task(callback(Post(submission)))
             except AsyncPRAWException as err:
-                self.logger.critical(f"Exception in watcher \"{watcher['name']}\": {err}")
-                self.logger.info(f"Restarting watcher \"{watcher['name']}\"...")
+                self.logger.warning(f"{type(err).__name__} caught in watcher \"{watcher['name']}\". Restarting...")
                 await asyncio.sleep(5)
                 continue
 
