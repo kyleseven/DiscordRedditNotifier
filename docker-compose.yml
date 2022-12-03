@@ -10,3 +10,4 @@ services:
       - type: bind
         source: ./config/config.toml
         target: /discordbot/config.toml
+      - /etc/localtime:/etc/localtime:ro
