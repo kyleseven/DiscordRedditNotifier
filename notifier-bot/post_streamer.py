@@ -2,8 +2,6 @@ import asyncio
 import logging
 
 import asyncpraw
-from asyncpraw.exceptions import AsyncPRAWException
-from asyncprawcore.exceptions import AsyncPrawcoreException
 
 import config
 
@@ -34,7 +32,7 @@ class PostStreamer:
                 async for submission in subreddit.stream.submissions(skip_existing=True):
                     if self.watcher_match(watcher, submission):
                         asyncio.create_task(callback(Post(submission)))
-            except (AsyncPrawcoreException, AsyncPRAWException) as err:
+            except Exception as err:
                 self.logger.warning(f"{type(err).__name__} caught in watcher \"{watcher['name']}\". Restarting...")
                 await asyncio.sleep(5)
                 continue
