@@ -23,7 +23,7 @@ async def notify(post: Post):
     """Send a message to the channel_id about the given post.
     """
     channel = client.get_channel(config.channel_id)
-    await channel.send(f"__**{post.title}**__\n<{post.link}>")  # type: ignore
+    await channel.send(f"__**{discord.utils.escape_markdown(post.title)}**__\n<{post.link}>")  # type: ignore
 
 
 client.run(config.token)
