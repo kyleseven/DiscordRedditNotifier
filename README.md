@@ -1,10 +1,10 @@
 # Discord Reddit Notifier
 A bot for Discord that sends messages to a channel about new Reddit posts that match specific search terms.
 
-I created this quickly when the [Pager app was down for 2 days](https://www.reddit.com/r/pager/comments/z07m7w/no_notifications/), so it's not exactly the most sophisticated bot. It currently only supports sending notifications to a single channel on a single server.
+I created this quickly when the [Pager app was down for 2 days](https://www.reddit.com/r/pager/comments/z07m7w/no_notifications/), so it's not exactly the most sophisticated bot. Currently, the bot only supports running on a single server, but notifications can be sent to different channels depending on your configuration.
 
 ## Dependencies
-This bot runs on Python 3.11 and depends on discord.py and aPRAW.
+This bot runs on Python 3.11 and depends on discord.py and Async PRAW.
 
 ## Running the Bot
 ### Using Docker-Compose
