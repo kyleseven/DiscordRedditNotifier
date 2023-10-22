@@ -40,16 +40,17 @@ class PostStreamer:
 
     @staticmethod
     def watcher_match(watcher, submission):
-        """Takes a watcher and submission and returns a boolean representing whether or not the submission
-        title matches the watcher's parameters.
+        """Determines if the submission title matches the watcher's parameters.
+        This is a case-insensitive comparison.
         """
+        title = submission.title.casefold()
+        search_terms = [term.casefold() for term in watcher["search_terms"]]
+
         match watcher["match_mode"]:
             case "OR":
-                if any(term.casefold() in submission.title.casefold() for term in watcher["search_terms"]):
-                    return True
+                return any(term in title for term in search_terms)
             case "AND":
-                if all(term.casefold() in submission.title.casefold() for term in watcher["search_terms"]):
-                    return True
+                return all(term in title for term in search_terms)
             case "ALL":
                 return True
 
