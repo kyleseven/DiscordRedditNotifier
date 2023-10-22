@@ -10,7 +10,7 @@ with open("config.toml", "rb") as f:
         exit(-1)
 
 token = config["bot"]["token"]
-channel_id = config["bot"]["channel_id"]
+default_channel_id = config["bot"]["default_channel_id"]
 reddit_client_id = config["reddit"]["client_id"]
 reddit_client_secret = config["reddit"]["client_secret"]
 reddit_user_agent = config["reddit"]["user_agent"]

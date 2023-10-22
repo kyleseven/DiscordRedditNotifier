@@ -19,10 +19,10 @@ async def on_ready():
     await post_streamer.stream_new(notify)
 
 
-async def notify(post: Post):
+async def notify(post: Post, channel_id: int):
     """Send a message to the channel_id about the given post.
     """
-    channel = client.get_channel(config.channel_id)
+    channel = client.get_channel(channel_id)
     await channel.send(f"__**{discord.utils.escape_markdown(post.title)}**__\n<{post.link}>")  # type: ignore
 
 

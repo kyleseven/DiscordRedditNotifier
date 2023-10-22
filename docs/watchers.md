@@ -7,6 +7,7 @@ The included `config.toml` includes examples like the one below:
 name = "K-Pop Updates"
 subreddit = "kpop"
 enabled = true
+channel_id = 8888888888888888888
 match_mode = "OR"
 search_terms = [
   "loona",
@@ -32,6 +33,9 @@ The subreddit the watcher should watch.
 
 ## `enabled`
 Boolean value to enable the watcher or not.
+
+## `channel_id` (optional)
+The channel id of the channel you want notifications from this watcher to be sent to. If not defined, then notifications will be sent to `default_channel_id` in the `[bot]` configuration.
 
 ## `match_mode`
 How the watcher determines a match. This can be set to:

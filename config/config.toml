@@ -1,6 +1,6 @@
 [bot]
 token = "Insert Token Here"
-channel_id = 9999999999999999999
+default_channel_id = 9999999999999999999
 
 [reddit]
 client_id = "Insert Client ID Here"
@@ -13,6 +13,7 @@ user_agent = "Discord Reddit Notifier Bot"
 name = "K-Pop Updates"
 subreddit = "kpop"
 enabled = true
+channel_id = 8888888888888888888
 match_mode = "OR"
 search_terms = [
   "loona",

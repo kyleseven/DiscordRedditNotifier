@@ -36,6 +36,7 @@ The following watcher is defined in `config.toml`
 name = "K-Pop Updates"
 subreddit = "kpop"
 enabled = true
+channel_id = 8888888888888888888
 match_mode = "OR"
 search_terms = [
   "loona",

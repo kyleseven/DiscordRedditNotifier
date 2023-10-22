@@ -31,7 +31,8 @@ class PostStreamer:
                 subreddit = await self.reddit.subreddit(watcher["subreddit"])
                 async for submission in subreddit.stream.submissions(skip_existing=True):
                     if self.watcher_match(watcher, submission):
-                        asyncio.create_task(callback(Post(submission)))
+                        asyncio.create_task(callback(Post(submission), watcher.get(
+                            "channel_id", config.default_channel_id)))
             except Exception as err:
                 self.logger.warning(f"{type(err).__name__} caught in watcher \"{watcher['name']}\". Restarting...")
                 await asyncio.sleep(5)

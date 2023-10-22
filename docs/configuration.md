@@ -3,15 +3,15 @@
 ```toml
 [bot]
 token = "Insert Token Here"
-channel_id = 9999999999999999999
+default_channel_id = 9999999999999999999
 ```
 ### `token`
 Your Discord Bot token.
 
 Create a new application on the [Discord Developer Portal](https://discord.com/developers/applications/), then create a new bot to receive a token. Add this bot to your server.
 
-### `channel_id`
-The channel ID of the channel you want notifications to be sent to. The bot must be added to the server where this channel is located.
+### `default_channel_id`
+The channel ID of the channel you want notifications to be sent to by default. The bot must be added to the server where this channel is located.
 
 You can retrieve this by enabling Developer Mode in Discord (Settings -> Advanced), then right click the desired channel and Copy ID.
 
