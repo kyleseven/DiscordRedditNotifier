@@ -1,3 +1,6 @@
+import asyncio
+import logging
+
 import discord
 from post_streamer import Post, PostStreamer
 
@@ -13,10 +16,15 @@ client = discord.Client(
 
 
 @client.event
-async def on_ready():
+async def setup_hook():
     # Set up the post fetcher
     post_streamer = PostStreamer()
-    await post_streamer.stream_new(notify)
+    asyncio.create_task(post_streamer.stream_new(notify))
+
+
+@client.event
+async def on_ready():
+    logging.getLogger("discord.bot").info(f"Logged in as {client.user}")
 
 
 async def notify(post: Post, channel_id: int):
