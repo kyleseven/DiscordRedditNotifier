@@ -50,7 +50,7 @@ async def notify(post: Post, channel_id: int):
     if validators.url(post.thumbnail):
         embed.set_thumbnail(url=post.thumbnail)
 
-    if post.is_self:
+    if post.selftext:
         description = post.selftext[:509] + "..." if len(post.selftext) > 512 else post.selftext
         embed.description = description
 
