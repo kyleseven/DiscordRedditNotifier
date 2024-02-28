@@ -37,6 +37,7 @@ name = "K-Pop Updates"
 subreddit = "kpop"
 enabled = true
 channel_id = 8888888888888888888
+color = 0xC77497
 match_mode = "OR"
 search_terms = [
   "loona",
@@ -51,6 +52,6 @@ search_terms = [
 ```
 This watcher will watch r/kpop for new posts that contain *any* of the strings in `search_terms` in the title. Read more about watchers [here](docs/watchers.md).
 
-Once the watcher finds a post that matches, a message will be sent to the channel defined by `channel_id`, as shown below.
+Once the watcher finds a post that matches, an embed will be sent to the channel defined by `channel_id`, as shown below.
 
 ![notification](https://i.imgur.com/vxlLEs3.png)

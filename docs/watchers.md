@@ -8,6 +8,7 @@ name = "K-Pop Updates"
 subreddit = "kpop"
 enabled = true
 channel_id = 8888888888888888888
+color = 0xC77497
 match_mode = "OR"
 search_terms = [
   "loona",
@@ -36,6 +37,10 @@ Boolean value to enable the watcher or not.
 
 ## `channel_id` (optional)
 The channel id of the channel you want notifications from this watcher to be sent to. If not defined, then notifications will be sent to `default_channel_id` in the `[bot]` configuration.
+
+## `color` (optional)
+The color of the notification embeds from this watcher. If not defined, then notifications will take the color
+of `default_color` in the `[bot]` configuration.
 
 ## `match_mode`
 How the watcher determines a match. This can be set to:

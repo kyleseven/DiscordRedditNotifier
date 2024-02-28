@@ -4,6 +4,7 @@
 [bot]
 token = "Insert Token Here"
 default_channel_id = 9999999999999999999
+default_color = 0x999999
 ```
 ### `token`
 Your Discord Bot token.
@@ -14,6 +15,11 @@ Create a new application on the [Discord Developer Portal](https://discord.com/d
 The channel ID of the channel you want notifications to be sent to by default. The bot must be added to the server where this channel is located.
 
 You can retrieve this by enabling Developer Mode in Discord (Settings -> Advanced), then right click the desired channel and Copy ID.
+
+### `default_color`
+The default color of the notification embeds.
+
+This is a represented with a hex value. It must be prefixed with `0x`, so a hex color of `#999999` would be `0x999999`.
 
 ## Reddit API
 ```toml
