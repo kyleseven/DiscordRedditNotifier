@@ -35,7 +35,7 @@ async def notify(post: Post, channel_id: int):
     channel = client.get_channel(channel_id)
 
     embed = discord.Embed(
-        title=post.title,
+        title=post.title[:253] + "..." if len(post.title) > 256 else post.title,
         url=post.comments_link,
         color=post.embed_color,
         timestamp=datetime.datetime.fromtimestamp(post.created_utc),
