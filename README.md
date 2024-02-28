@@ -54,4 +54,4 @@ This watcher will watch r/kpop for new posts that contain *any* of the strings i
 
 Once the watcher finds a post that matches, an embed will be sent to the channel defined by `channel_id`, as shown below.
 
-![notification](https://i.imgur.com/vxlLEs3.png)
+![notification](https://i.imgur.com/p2gdik4.png)
