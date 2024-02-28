@@ -31,7 +31,7 @@ class PostStreamer:
                 subreddit = await self.reddit.subreddit(watcher["subreddit"])
                 await subreddit.load()
 
-                subreddit_icon = subreddit.icon_img
+                subreddit_icon = subreddit.community_icon.split("?")[0] if subreddit.community_icon else subreddit.icon_img
                 watcher_color = watcher.get("color", config.default_color)
                 channel_id = watcher.get("channel_id", config.default_channel_id)
 
