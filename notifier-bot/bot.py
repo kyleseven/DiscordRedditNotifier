@@ -56,7 +56,8 @@ async def notify(post: Post, channel_id: int):
 
     if post.link_flair_text:
         flair = post.link_flair_text.strip("[]")
-        embed.title = f"[{flair}] {post.title}"
+        if not post.title.startswith(f"[{flair}]"):
+            embed.title = f"[{flair}] {post.title}"
 
     await channel.send(embed=embed)  # type: ignore
 
