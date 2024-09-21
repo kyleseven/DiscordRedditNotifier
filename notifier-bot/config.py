@@ -2,7 +2,7 @@ import tomli
 
 config = None
 
-with open("config.toml", "rb") as f:
+with open("./config/config.toml", "rb") as f:
     try:
         config = tomli.load(f)
     except tomli.TOMLDecodeError:

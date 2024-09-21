@@ -1,6 +1,6 @@
 services:
   notifier-bot:
-    build: ./notifier-bot
+    build: .
     container_name: notifier-bot
     restart: unless-stopped
     init: true
@@ -8,6 +8,6 @@ services:
     stdin_open: true
     volumes:
       - type: bind
-        source: ./config/config.toml
-        target: /discordbot/config.toml
+        source: ./config
+        target: /discordbot/config
       - /etc/localtime:/etc/localtime:ro
