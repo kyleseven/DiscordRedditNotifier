@@ -35,17 +35,14 @@ color = 0xC77497
 match_mode = "OR"
 search_terms = [
   "loona",
-  "dreamcatcher",
-  "red velvet",
-  "itzy",
-  "le sserafim",
-  "aespa",
-  "heize",
-  "stayc"
+  "artms",
+  "loossemble",
+  "chuu",
+  "yves",
 ]
 ```
 This watcher will watch r/kpop for new posts that contain *any* of the strings in `search_terms` in the title. Read more about watchers [here](docs/watchers.md).
 
-Once the watcher finds a post that matches, an embed will be sent to the channel defined by `channel_id`, as shown below.
+Once the watcher finds a post that matches, an embed will be sent to the channel defined by `channel_id`, as shown below. Note that matches are case-insensitive.
 
 ![notification](https://i.imgur.com/p2gdik4.png)

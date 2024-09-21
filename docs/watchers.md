@@ -12,13 +12,10 @@ color = 0xC77497
 match_mode = "OR"
 search_terms = [
   "loona",
-  "dreamcatcher",
-  "red velvet",
-  "itzy",
-  "le sserafim",
-  "aespa",
-  "heize",
-  "stayc"
+  "artms",
+  "loossemble",
+  "chuu",
+  "yves",
 ]
 ```
 This watcher will watch r/kpop for new posts that contain ANY of the `search_terms` in the title.
