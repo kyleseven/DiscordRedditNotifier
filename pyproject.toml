@@ -3,9 +3,10 @@ name = "DiscordRedditNotifier"
 version = "0.1.0"
 description = "Get notifications from Reddit in a Discord server."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
     "asyncpraw>=7.8.0",
+    "audioop-lts>=0.2.1",
     "discord-py>=2.4.0",
     "tomli>=2.1.0",
     "validators>=0.34.0",
