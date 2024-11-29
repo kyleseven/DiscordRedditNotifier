@@ -34,8 +34,17 @@ async def notify(post: Post, channel_id: int):
     """
     channel = client.get_channel(channel_id)
 
+    title = post.title
+    if post.link_flair_text:
+        flair = post.link_flair_text.strip("[]")
+        if not post.title.startswith(f"[{flair}]"):
+            title = f"[{flair}] {title}"
+
+    if len(title) > 256:
+        title = title[:253] + "..."
+
     embed = discord.Embed(
-        title=post.title[:253] + "..." if len(post.title) > 256 else post.title,
+        title=title,
         url=post.comments_link,
         color=post.embed_color,
         timestamp=datetime.datetime.fromtimestamp(post.created_utc),
@@ -53,11 +62,6 @@ async def notify(post: Post, channel_id: int):
     if post.selftext:
         description = post.selftext[:509] + "..." if len(post.selftext) > 512 else post.selftext
         embed.description = description
-
-    if post.link_flair_text:
-        flair = post.link_flair_text.strip("[]")
-        if not post.title.startswith(f"[{flair}]"):
-            embed.title = f"[{flair}] {post.title}"
 
     await channel.send(embed=embed)  # type: ignore
 
